@@ -9,14 +9,23 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@expo/metro-runtime": "~3.1.3",
+    "@react-navigation/native": "^6.1.10",
+    "@react-navigation/stack": "^6.3.21",
     "expo": "~50.0.6",
     "expo-status-bar": "~1.11.1",
     "react": "18.2.0",
-    "react-native": "0.73.4"
+    "react-dom": "18.2.0",
+    "react-native": "0.73.4",
+    "react-native-web": "~0.19.6",
+    "expo-location": "~16.5.3",
+    "react-native-gesture-handler": "~2.14.0",
+    "react-native-maps": "1.10.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
     "@types/react": "~18.2.45",
+    "metro-config": "^0.80.5",
     "typescript": "^5.1.3"
   },
   "private": true
