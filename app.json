@@ -11,9 +11,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
@@ -22,7 +20,12 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.virajrai.HospitalFinder"
+      "package": "com.virajrai.HospitalFinder",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyAPJaKjvjTVPRA87sdPM6Jg-2bPS0BNsMU"
+        }
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"
