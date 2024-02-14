@@ -1,17 +1,16 @@
 import { FC } from "react";
-import { Button, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 
-const Login: FC = ({ navigation }: any) => {
-  // const navigation = useNavigation();
-
+//@ts-ignore
+const Login: FC = ({ navigation }) => {
   const goToSecondPage = () => {
-    console.log("Navigating to SecondPage");
     navigation.navigate("dashboard");
   };
   return (
     <View style={styles.container}>
-      <Text>This is the login page.</Text>
-      <Button onPress={goToSecondPage} title="Go to Second Page" />
+      <Pressable style={styles.button} onPress={goToSecondPage}>
+        <Text style={styles.text}>{"Find near by hospitals"}</Text>
+      </Pressable>
     </View>
   );
 };
@@ -19,9 +18,25 @@ const Login: FC = ({ navigation }: any) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#ffe6e2",
     alignItems: "center",
     justifyContent: "center",
+  },
+  button: {
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 4,
+    elevation: 3,
+    backgroundColor: "#fd907e",
+  },
+  text: {
+    fontSize: 16,
+    lineHeight: 21,
+    fontWeight: "bold",
+    letterSpacing: 0.25,
+    color: "white",
   },
 });
 

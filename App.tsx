@@ -6,15 +6,20 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 
 export default function App() {
-  const goToSecondPage = () => {
-    console.log("clicked");
-  };
   const Stack = createStackNavigator();
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="login" component={Login} />
-        <Stack.Screen name="dashboard" component={Dashboard} />
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="login"
+          component={Login}
+        />
+        <Stack.Screen
+          options={{ title: "Near by hospitals", headerTintColor: "#fd907e" }}
+          name="dashboard"
+          component={Dashboard}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
