@@ -21,6 +21,7 @@
       "bundleIdentifier": "com.virajrai.HospitalFinder"
     },
     "android": {
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffe6e2"

@@ -23,6 +23,7 @@ export default {
       bundleIdentifier: "com.virajrai.HospitalFinder",
     },
     android: {
+      googleServicesFile: process.env.GOOGLE_SERVICES_JSON,
       config: {
         googleMaps: {
           apiKey: process.env.GMAP_API_KEY,
