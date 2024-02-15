@@ -11,6 +11,10 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffe6e2"
     },
+    "androidStatusBar": {
+      "backgroundColor": "#fd907e",
+      "translucent": false
+    },
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
@@ -21,12 +25,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffe6e2"
       },
-      "package": "com.virajrai.HospitalFinder",
-      "config": {
-        "googleMaps": {
-          "apiKey": "AIzaSyAPJaKjvjTVPRA87sdPM6Jg-2bPS0BNsMU"
-        }
-      }
+      "package": "com.virajrai.HospitalFinder"
     },
     "web": {
       "favicon": "./assets/favicon.png"

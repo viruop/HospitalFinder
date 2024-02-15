@@ -1,3 +1,4 @@
+import { StatusBar } from "expo-status-bar";
 import { FC } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
@@ -11,6 +12,7 @@ const Login: FC = ({ navigation }) => {
       <Pressable style={styles.button} onPress={goToSecondPage}>
         <Text style={styles.text}>{"Find near by hospitals"}</Text>
       </Pressable>
+      <StatusBar style="auto" />
     </View>
   );
 };

@@ -4,6 +4,7 @@ import MapView, { Callout, Marker } from "react-native-maps";
 
 import * as Location from "expo-location";
 import { PlacesAPIResponse } from "../../types";
+import { GMAP_API_KEY } from "@env";
 
 const Dashboard: React.FC = () => {
   const [location, setLocation] = useState<Location.LocationObject | null>(
@@ -36,7 +37,9 @@ const Dashboard: React.FC = () => {
 
   const getHospitals = async (location: Location.LocationObject) => {
     setLoading(true);
-    const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${location.coords.latitude}%2C${location.coords.longitude}&radius=2000&type=hospital&key=${process.env.GMAP_API_KEY}`;
+    const apiKey = GMAP_API_KEY;
+    console.log("apikey", apiKey);
+    const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${location.coords.latitude}%2C${location.coords.longitude}&radius=2000&type=hospital&key=${apiKey}`;
 
     fetch(url)
       .then((res) => {
@@ -78,9 +81,13 @@ const Dashboard: React.FC = () => {
                 <View style={styles.hospitalCard}>
                   <Text style={styles.hospitalName}>{hospital.name}</Text>
                   <Text style={styles.address}>{hospital.vicinity}</Text>
-                  <Text style={styles.rating}>
-                    Rating: {hospital.rating} ({hospital.user_ratings_total})
-                  </Text>
+                  {hospital.rating ? (
+                    <Text style={styles.rating}>
+                      Rating: {hospital.rating} ({hospital.user_ratings_total})
+                    </Text>
+                  ) : (
+                    <Text style={styles.rating}>Rating not available</Text>
+                  )}
                 </View>
               </Callout>
             </Marker>
