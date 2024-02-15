@@ -100,6 +100,10 @@ const Login: FC = ({ navigation }) => {
     setGettingLoginStatus(false);
   };
 
+  const goToSecondPage = () => {
+    navigation.navigate("dashboard");
+  };
+
   if (gettingLoginStatus) {
     return (
       <View style={styles.container}>
@@ -122,6 +126,13 @@ const Login: FC = ({ navigation }) => {
                 <Text style={styles.text}>Email: {userInfo.user.email}</Text>
                 <TouchableOpacity style={styles.buttonStyle} onPress={signOut}>
                   <Text>Logout</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  style={styles.buttonStyle2}
+                  onPress={goToSecondPage}
+                >
+                  <Text>Find hospitals</Text>
                 </TouchableOpacity>
               </>
             ) : (
@@ -158,7 +169,7 @@ const styles = StyleSheet.create({
     lineHeight: 21,
     fontWeight: "bold",
     letterSpacing: 0.25,
-    color: "white",
+    color: "black",
   },
   titleText: {
     fontSize: 20,
@@ -172,6 +183,13 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
   },
   buttonStyle: {
+    alignItems: "center",
+    backgroundColor: "#fd907e",
+    padding: 10,
+    width: 300,
+    marginTop: 30,
+  },
+  buttonStyle2: {
     alignItems: "center",
     backgroundColor: "#fd907e",
     padding: 10,
