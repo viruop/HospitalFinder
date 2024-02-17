@@ -6,7 +6,7 @@ import * as Location from "expo-location";
 import { PlacesAPIResponse } from "../../types";
 import { GMAP_API_KEY } from "@env";
 
-const Dashboard: React.FC = () => {
+const Dashboard: React.FC = ({ navigation }: any) => {
   const [location, setLocation] = useState<Location.LocationObject | null>(
     null
   );
@@ -37,16 +37,13 @@ const Dashboard: React.FC = () => {
 
   const getHospitals = async (location: Location.LocationObject) => {
     setLoading(true);
-    const apiKey = GMAP_API_KEY;
-    console.log("apikey", apiKey);
-    const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${location.coords.latitude}%2C${location.coords.longitude}&radius=2000&type=hospital&key=${apiKey}`;
+    const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${location.coords.latitude}%2C${location.coords.longitude}&radius=3000&type=hospital&key=${GMAP_API_KEY}`;
 
     fetch(url)
       .then((res) => {
         return res.json();
       })
       .then((res: PlacesAPIResponse) => {
-        console.log("res", res.results);
         setHospitals(res.results);
         setLoading(false);
       })
@@ -54,6 +51,11 @@ const Dashboard: React.FC = () => {
         console.log("error", error);
         setLoading(false);
       });
+  };
+
+  const getDetails = (hospital: PlacesAPIResponse["results"][0]) => {
+    // console.log("place_id", place_id);
+    navigation.navigate("modal", { hospital });
   };
 
   return (
@@ -66,6 +68,8 @@ const Dashboard: React.FC = () => {
             latitudeDelta: 0.02,
             longitudeDelta: 0.02,
           }}
+          showsUserLocation
+          showsMyLocationButton
           style={styles.map}
         >
           {hospitals?.map((hospital, i) => (
@@ -77,7 +81,7 @@ const Dashboard: React.FC = () => {
               }}
               title="Hospital Location"
             >
-              <Callout>
+              <Callout onPress={() => getDetails(hospital)}>
                 <View style={styles.hospitalCard}>
                   <Text style={styles.hospitalName}>{hospital.name}</Text>
                   <Text style={styles.address}>{hospital.vicinity}</Text>

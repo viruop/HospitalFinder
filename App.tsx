@@ -4,22 +4,26 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
+import Modal from "./components/Modal";
 
 export default function App() {
   const Stack = createStackNavigator();
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator screenOptions={{ headerTintColor: "#fd907e" }}>
         <Stack.Screen
           options={{ headerShown: false }}
           name="login"
           component={Login}
         />
         <Stack.Screen
-          options={{ title: "Near by hospitals", headerTintColor: "#fd907e" }}
+          options={{ title: "Near by hospitals" }}
           name="dashboard"
           component={Dashboard}
         />
+        <Stack.Group screenOptions={{ presentation: "modal" }}>
+          <Stack.Screen name="modal" component={Modal} />
+        </Stack.Group>
       </Stack.Navigator>
     </NavigationContainer>
   );
